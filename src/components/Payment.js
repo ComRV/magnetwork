@@ -90,8 +90,7 @@ const Payment = () => {
 				setPaket(res.data.document);
 			})
 			.catch((error) => {
-				// navigate('/');
-				console.log(error);
+				navigate('/');
 			});
 	}, []);
 

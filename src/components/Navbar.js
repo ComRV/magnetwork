@@ -5,9 +5,9 @@ const Navbar = (props) => {
 	return (
 		<nav className={`flex h-[60px] w-screen fixed z-10 bg-white justify-around items-center ${props.to === 'payment' && 'drop-shadow-lg'}`}>
 			<div className={`relative bottom-[7px] flex gap-x-2 ${props.to === 'payment' && 'w-[90%] md:w-auto justify-between'}`}>
-				<img src={rekomendasiku} alt="rekomendasiku" className="w-32 " />
-				{props.to === 'payment' && (
+				{props.to === 'payment' ? (
 					<>
+						<img src={rekomendasiku} alt="rekomendasiku" className="w-32" />
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
@@ -20,6 +20,8 @@ const Navbar = (props) => {
 						</svg>
 						<img src={magnetwork2} alt="magnetwork logo" className="w-32 relative top-[5px]" />
 					</>
+				) : (
+					<img src={magnetwork2} alt="magnetwork logo" className="w-32 relative top-[5px]" />
 				)}
 			</div>
 			<ul className={`flex gap-x-2 md:gap-x-5 font-bold text-[13px] ${props.to === 'payment' && 'hidden'}`}>

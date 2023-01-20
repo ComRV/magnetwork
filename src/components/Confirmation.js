@@ -77,7 +77,7 @@ const Confirmation = () => {
 						{data.qr_url && <img src={data.qr_url} alt={data.qr_url} onClick={() => window.open(data.qr_url, '_blank')} className="w-32 h-32 self-center cursor-pointer md:mt-6" />}
 					</div>
 					<div className="mt-5 ml-5 md:ml-8 text-sm">
-						<b>Panduan Pembayaran Melalui ini</b>
+						<b>Panduan Pembayaran Melalui {data.payment_name === 'QRIS (Customizable)' ? 'QRIS' : data.payment_name}</b>
 						{data.instructions &&
 							data.instructions.map((data) => {
 								return (

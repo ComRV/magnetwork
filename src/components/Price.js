@@ -62,65 +62,71 @@ const Price = () => {
 const DigitalMarketing = () => {
 	return (
 		<>
-			<div className="drop-shadow-lg rounded-xl md:place-self-end bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[12cm]">
+			<div className="drop-shadow-lg rounded-xl md:place-self-end bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[16cm]">
 				<p className="text-[#F62326] border border-[#F62326] py-2 rounded-xl font-bold text-center">Paket Beginner</p>
 				<p className="font-bold text-center text-sm mt-6">Starts From</p>
-				<p className="font-bold text-center text-[#BB0003] line-through decoration-2 leading-5">6.000K/Bulan</p>
-				<p className="font-bold text-center text-lg leading-5">5.000K/Bulan</p>
-				<ul className="list-disc text-[13px] ml-10 mt-4">
-					<li className="leading-8">Produksi Foto</li>
-					<li className="leading-8">Desain Grafis</li>
-					<li className="leading-8">Sosial Media Manajemen</li>
-					<li className="leading-8">Digital Ads</li>
-					<li className="leading-8">Website (Landing Page)</li>
+				<p className="font-bold text-center text-[#BB0003] line-through decoration-2 leading-5">6.500K/Bulan</p>
+				<p className="font-bold text-center text-lg leading-5">5.500K/Bulan</p>
+				<ul className="list-disc text-[13px] ml-10 mr-1 mt-4">
+					<li className="leading-8">Website Landing Pages</li>
+					<li className="leading-8">Sosial Media Management</li>
+					<li className="leading-8">Content Planner</li>
+					<li className="leading-8">Desain Feed</li>
+					<li className="leading-8">Desain Story</li>
+					<li className="leading-8">Caption Writing</li>
+					<li className="leading-8">Digital Advertising 1 Channel (Support Facebook Ads, Instagram Ads, Google Ads)</li>
+					<li className="leading-8">Report di akhir bulan</li>
 				</ul>
 				<button
-					onClick={() => window.location.assign(`payment/63ac461c84adbad7e33830d5`)}
+					onClick={() => window.location.assign(`https://wa.me/p/6468463089848201/6285156116920`)}
 					className="absolute -bottom-[1.1rem] duration-150 hover:bg-[#c91c1f] -translate-x-1/2 left-1/2 bg-[#F62326] text-white font-semibold h-[1cm] w-[5cm] rounded-md text-sm"
 				>
 					Dapatkan Sekarang
 				</button>
 			</div>
-			<div className="drop-shadow-lg rounded-xl bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[12cm]">
+			<div className="drop-shadow-lg rounded-xl bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[16cm]">
 				<p className="text-[#F62326] border border-[#F62326] py-2 rounded-xl font-bold text-center">Paket Standard</p>
 				<p className="font-bold text-center text-sm mt-6">Starts From</p>
 				<p className="font-bold text-center text-[#BB0003] line-through decoration-2 leading-5">10.000K/Bulan</p>
 				<p className="font-bold text-center text-lg leading-5">9.000K/Bulan</p>
 				<ul className="list-disc text-[13px] ml-10 mt-4">
-					<li className="leading-8">Marketing Plan</li>
+					<li className="leading-8">Website (Up To 6 Halaman)</li>
+					<li className="leading-8">Sosial Media Management</li>
+					<li className="leading-8">Content Planner</li>
+					<li className="leading-8">Desain Feed</li>
+					<li className="leading-8">Desain Story</li>
+					<li className="leading-8">Caption Writing</li>
 					<li className="leading-8">Produksi Foto</li>
-					<li className="leading-8">Produksi Video</li>
-					<li className="leading-8">Desain Grafis</li>
-					<li className="leading-8">Sosial Media Manajemen</li>
-					<li className="leading-8">Copywriter</li>
-					<li className="leading-8">Digital Ads</li>
-					<li className="leading-8">Website (Landing Page)</li>
+					<li className="leading-8">Digital Advertising 2 Channel (Support Facebook Ads, Instagram Ads, Google Ads)</li>
+					<li className="leading-8">Report di akhir bulan</li>
 				</ul>
 				<button
-					onClick={() => window.location.assign(`payment/63ac466bcf609c92b7d38415`)}
+					onClick={() => window.location.assign(`https://wa.me/p/5728647677190000/6285156116920`)}
 					className="absolute -bottom-[1.1rem] duration-150 hover:bg-[#c91c1f] -translate-x-1/2 left-1/2 bg-[#F62326] text-white font-semibold h-[1cm] w-[5cm] rounded-md text-sm"
 				>
 					Dapatkan Sekarang
 				</button>
 			</div>
-			<div className="drop-shadow-lg rounded-xl md:place-self-start bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[12cm]">
+			<div className="drop-shadow-lg rounded-xl md:place-self-start bg-white w-[80vw] md:w-[31vw] lg:w-[21vw] h-[16cm]">
 				<p className="text-[#F62326] border border-[#F62326] py-2 rounded-xl font-bold text-center">Paket Professional</p>
 				<p className="font-bold text-center text-sm mt-6">Starts From</p>
 				<p className="font-bold text-center text-[#BB0003] line-through decoration-2 leading-5">15.000K/Bulan</p>
 				<p className="font-bold text-center text-lg leading-5">12.500K/Bulan</p>
 				<ul className="list-disc text-[13px] ml-10 mt-4">
-					<li className="leading-8">Marketing Plan</li>
+					<li className="leading-8">Website (Up To 8 Halaman)</li>
+					<li className="leading-8">Sosial Media Management</li>
+					<li className="leading-8">Content Planner</li>
+					<li className="leading-8">Desain Feed</li>
+					<li className="leading-8">Desain Story</li>
+					<li className="leading-8">Video Reels</li>
+					<li className="leading-8">Caption Writing</li>
 					<li className="leading-8">Produksi Foto</li>
 					<li className="leading-8">Produksi Video</li>
-					<li className="leading-8">Desain Grafis</li>
-					<li className="leading-8">Sosial Media Manajemen</li>
-					<li className="leading-8">Copywriter</li>
-					<li className="leading-8">Digital Ads</li>
-					<li className="leading-8">Website (Landing Page)</li>
-					<li className="leading-8">SEO</li>
+					<li className="leading-8">Digital Advertising 3 Channel (Support Facebook Ads, Instagram Ads, Google Ads)</li>
+					<li className="leading-8">Report di akhir bulan</li>
 				</ul>
 				<button
-					onClick={() => window.location.assign(`payment/63ac468884adbad7e3384646`)}
+					onClick={() => window.location.assign(`https://wa.me/p/6180913338607388/6285156116920`)}
 					className="absolute -bottom-[1.1rem] duration-150 hover:bg-[#c91c1f] -translate-x-1/2 left-1/2 bg-[#F62326] text-white font-semibold h-[1cm] w-[5cm] rounded-md text-sm"
 				>
 					Dapatkan Sekarang

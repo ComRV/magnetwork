@@ -4,24 +4,25 @@ import briva from '../img/payment/briva.png';
 import bca from '../img/payment/bca.png';
 import cimb from '../img/payment/cimb.png';
 import mandiri from '../img/payment/mandiri.png';
-import maybank from '../img/payment/maybank.png';
-import dana from '../img/payment/dana.png';
-import bsi from '../img/payment/bsi.png';
-import gopay from '../img/payment/gopay.png';
-import jago from '../img/payment/jago.png';
-import jenius from '../img/payment/jenius.png';
-import linkaja from '../img/payment/linkaja.png';
-import mega from '../img/payment/mega.png';
-import octo from '../img/payment/octo.png';
-import ovo from '../img/payment/ovo.png';
-import uob from '../img/payment/uob.png';
-import muamalat from '../img/payment/muamalat.png';
+// import maybank from '../img/payment/maybank.png';
+// import dana from '../img/payment/dana.png';
+// import bsi from '../img/payment/bsi.png';
+// import gopay from '../img/payment/gopay.png';
+// import jago from '../img/payment/jago.png';
+// import jenius from '../img/payment/jenius.png';
+// import linkaja from '../img/payment/linkaja.png';
+// import mega from '../img/payment/mega.png';
+// import octo from '../img/payment/octo.png';
+// import ovo from '../img/payment/ovo.png';
+// import uob from '../img/payment/uob.png';
+// import muamalat from '../img/payment/muamalat.png';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import currencyFormatter from 'currency-formatter';
-import { sha256 } from 'js-sha256';
+// import { sha256 } from 'js-sha256';
+import md5 from 'md5';
 import ReactLoading from 'react-loading';
 
 const Payment = () => {
@@ -37,37 +38,34 @@ const Payment = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const pembayaran = () => {
-		const merchant_code = process.env.REACT_APP_MERCHANT_CODE;
-		const merchant_ref = `INV${Math.floor(Math.random() * 10 ** 5)}`;
-		const signature = sha256.hmac(process.env.REACT_APP_PRIVATE_KEY, merchant_code + merchant_ref + paket.hargaPaket);
+		const merchantCode = process.env.REACT_APP_MERCHANT_CODE;
+		const merchantOrderId = `INV${Math.floor(Math.random() * 10 ** 5)}`;
+		const signature = md5(merchantCode + merchantOrderId + paket.hargaPaket + process.env.REACT_APP_API_KEY);
 		const payload = {
-			method: code,
-			merchant_ref,
-			amount: paket.hargaPaket,
-			customer_name: nama,
-			customer_email: email,
-			customer_phone: no,
-			order_items: [
-				{
-					sku: id,
-					name: `PAKET ${paket.namaPaket}`,
-					price: paket.hargaPaket,
-					quantity: 1,
-				},
-			],
-			signature: signature,
+			merchantCode,
+			paymentMethod: code,
+			merchantOrderId,
+			paymentAmount: paket.hargaPaket,
+			productDetails: paket.keteranganPaket[0],
+			customerVaName: nama,
+			email,
+			returnUrl: 'https://magnetwork.my.id/',
+			callbackUrl: 'https://magnetwork.my.id/',
+			phoneNumber: no,
+			signature,
 		};
 		setIsLoading(true);
 		axios
 			.post('https://wewatchnow.site/payment', payload, {
-				headers: { Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`, 'Access-Control-Allow-Origin': '*' },
+				headers: { 'Access-Control-Allow-Origin': '*' },
 			})
 			.then((res) => {
-				navigate(`/confirmation/${res.data.data.reference}`);
+				window.location.assign(res.data.paymentUrl);
 			})
 			.catch((error) => {
 				setIsLoading(false);
 				alert('Pembayaran tidak bisa dilakukan. Metode pembayaran dan identitas wajib isi');
+				console.log(error);
 			});
 	};
 
@@ -93,7 +91,6 @@ const Payment = () => {
 				navigate('/');
 			});
 	}, []);
-
 	return (
 		<>
 			<Helmet>
@@ -199,15 +196,15 @@ const Payment = () => {
 							Pilih salah satu dari metode pembayaran yang tersedia, kami merekomendasikan melalui Transfer Virtual Account untuk kemudahan transaksi.
 						</p>
 					</div>
-					<div className="mt-3 w-[90vw] md:w-[10cm] h-[9cm] border border-[#F62326] rounded-lg">
+					<div className="mt-3 w-[90vw] md:w-[10cm] h-[7.5cm] border border-[#F62326] rounded-lg">
 						<h1 className="bg-[#F62326] rounded-md py-2 px-4 text-white text-xs">Transfer Virtual Account (Pengecekan Otomatis)</h1>
 						<div className="mt-4 flex flex-col gap-y-2">
 							<div
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('BCA Virtual Account');
-									setCode('BCAVA');
-									setAdmin(5500);
+									setCode('BC');
+									setAdmin(5000);
 								}}
 							>
 								<img src={bca} alt="bca" className={`border-2 p-1 rounded-lg ${method === 'BCA Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
@@ -217,8 +214,8 @@ const Payment = () => {
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('BRI Virtual Account');
-									setCode('BRIVA');
-									setAdmin(4250);
+									setCode('BR');
+									setAdmin(4000);
 								}}
 							>
 								<img src={briva} alt="briva" className={`border-2 p-1 rounded-lg ${method === 'BRI Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
@@ -228,8 +225,8 @@ const Payment = () => {
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('CIMB Virtual Account');
-									setCode('CIMBVA');
-									setAdmin(4250);
+									setCode('B1');
+									setAdmin(3000);
 								}}
 							>
 								<img src={cimb} alt="cimb" className={`border-2 p-1 rounded-lg ${method === 'CIMB Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
@@ -239,14 +236,14 @@ const Payment = () => {
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('Mandiri Virtual Account');
-									setCode('MANDIRIVA');
-									setAdmin(4250);
+									setCode('M2');
+									setAdmin(3000);
 								}}
 							>
 								<img src={mandiri} alt="mandiri" className={`border-2 p-1 rounded-lg ${method === 'Mandiri Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
 								<p className="self-center text-[#434343] text-sm">Mandiri Virtual Account</p>
 							</div>
-							<div
+							{/* <div
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('MayBank Virtual Account');
@@ -256,10 +253,10 @@ const Payment = () => {
 							>
 								<img src={maybank} alt="maybank" className={`border-2 p-1 rounded-lg ${method === 'MayBank Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
 								<p className="self-center text-[#434343] text-sm">MayBank Virtual Account</p>
-							</div>
+							</div>*/}
 						</div>
 					</div>
-					<div
+					{/* <div
 						className={`mt-3 w-[90vw] md:w-[10cm] h-[7.5cm] border ${method === 'QRIS' ? 'border-[#da1e21]' : 'border-[#F62326]'} rounded-lg cursor-pointer`}
 						onClick={() => {
 							setMethod('QRIS');
@@ -294,7 +291,7 @@ const Payment = () => {
 								<p className="border-2 border-[#C6C6C6] w-[55px] text-[8px] rounded-lg grid place-items-center text-center">20 Bank Lainnya</p>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</main>
 		</>

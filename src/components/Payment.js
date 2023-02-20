@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-target-blank */
 import briva from '../img/payment/briva.png';
-import bca from '../img/payment/bca.png';
+// import bca from '../img/payment/bca.png';
 import cimb from '../img/payment/cimb.png';
 import mandiri from '../img/payment/mandiri.png';
-// import maybank from '../img/payment/maybank.png';
+import maybank from '../img/payment/maybank.png';
 // import dana from '../img/payment/dana.png';
 // import bsi from '../img/payment/bsi.png';
 // import gopay from '../img/payment/gopay.png';
@@ -202,20 +202,20 @@ const Payment = () => {
 							<div
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
-									setMethod('BCA Virtual Account');
-									setCode('BC');
-									setAdmin(5000);
+									setMethod('MayBank Virtual Account');
+									setCode('VA');
+									setAdmin(3000);
 								}}
 							>
-								<img src={bca} alt="bca" className={`border-2 p-1 rounded-lg ${method === 'BCA Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
-								<p className="self-center text-[#434343] text-sm">BCA Virtual Account</p>
+								<img src={maybank} alt="maybank" className={`border-2 p-1 rounded-lg ${method === 'MayBank Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
+								<p className="self-center text-[#434343] text-sm">MayBank Virtual Account</p>
 							</div>
 							<div
 								className="flex gap-x-3 mx-4 cursor-pointer"
 								onClick={() => {
 									setMethod('BRI Virtual Account');
 									setCode('BR');
-									setAdmin(4000);
+									setAdmin(3000);
 								}}
 							>
 								<img src={briva} alt="briva" className={`border-2 p-1 rounded-lg ${method === 'BRI Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
@@ -237,7 +237,7 @@ const Payment = () => {
 								onClick={() => {
 									setMethod('Mandiri Virtual Account');
 									setCode('M2');
-									setAdmin(3000);
+									setAdmin(4000);
 								}}
 							>
 								<img src={mandiri} alt="mandiri" className={`border-2 p-1 rounded-lg ${method === 'Mandiri Virtual Account' ? 'border-[#F62326]' : 'border-[#C6C6C6]'}`} />
